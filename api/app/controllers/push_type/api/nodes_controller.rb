@@ -27,7 +27,7 @@ module PushType
     end
 
     def update
-      if @node.update_attributes node_params_with_fields.merge(updater: push_type_user)
+      if @node.update node_params_with_fields.merge(updater: push_type_user)
         render :show
       else
         render json: { errors: @node.errors }, status: :unprocessable_entity

@@ -30,7 +30,7 @@ module PushType
     end
 
     def update
-      if @node.update_attributes node_params.merge(updater: push_type_user)
+      if @node.update node_params.merge(updater: push_type_user)
         flash[:notice] = "#{ @node.type } successfully updated."
         redirect_to redirect_path
       else

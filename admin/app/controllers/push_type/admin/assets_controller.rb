@@ -54,7 +54,7 @@ module PushType
     end
 
     def update
-      if @asset.update_attributes asset_params
+      if @asset.update asset_params
         flash[:notice] = 'Media successfully updated.'
         redirect_to push_type_admin.assets_path
       else

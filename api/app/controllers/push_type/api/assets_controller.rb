@@ -27,7 +27,7 @@ module PushType
     end
 
     def update
-      if @asset.update_attributes asset_params
+      if @asset.update asset_params
         render :show
       else
         render json: { errors: @asset.errors }, status: :unprocessable_entity

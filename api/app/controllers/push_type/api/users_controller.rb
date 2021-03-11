@@ -22,7 +22,7 @@ module PushType
     end
 
     def update
-      if @user.update_attributes user_params_with_fields
+      if @user.update user_params_with_fields
         render :show
       else
         render json: { errors: @user.errors }, status: :unprocessable_entity
