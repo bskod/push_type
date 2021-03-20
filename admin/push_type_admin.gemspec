@@ -30,6 +30,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'font-awesome-rails',          '~> 4.7'
   s.add_dependency 'turbolinks',                  '~> 5.1'
   s.add_dependency 'breadcrumbs',                 '~> 0.1.7'
-  s.add_dependency 'kaminari',                    '~> 1.1'
+  s.add_dependency 'kaminari',                    '~> 1.2'
   s.add_dependency 'premailer-rails',             '~> 1.10'
 end
