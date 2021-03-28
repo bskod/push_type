@@ -38,7 +38,8 @@ class FrontEndController < ApplicationController
     if home_path?
       render template: 'push_type/setup', layout: nil, status: 404
     else
-      raise ActiveRecord::RecordNotFound
+      render file: "#{Rails.root}/public/404", layout: true, status: :not_found
+      # raise ActiveRecord::RecordNotFound
     end
   end
 
