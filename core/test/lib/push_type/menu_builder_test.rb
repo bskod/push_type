@@ -8,11 +8,11 @@ module PushType
 
     describe '.select' do
       it 'should create a new menu' do
-        MenuBuilder.select(:foo).must_be_instance_of MenuBuilder::Menu
+        _(MenuBuilder.select(:foo)).must_be_instance_of MenuBuilder::Menu
       end
       it 'should use existing menu if present' do
         menu = MenuBuilder.select(:bar)
-        MenuBuilder.select(:bar).must_equal menu
+        _(MenuBuilder.select(:bar)).must_equal menu
       end
     end
 

@@ -12,23 +12,23 @@ module PushType
     let(:foo)   { node.fields[:foo] }
     let(:bars)  { node.fields[:bars] }
 
-    it { foo.json_primitive.must_equal :string }
-    it { foo.template.must_equal 'select' }
-    it { foo.field_options.keys.must_include :include_blank }
-    it { foo.html_options.keys.must_include :multiple }
-    it { foo.wont_be :multiple? }
-    it { foo.json_value.must_equal 'b' }
-    it { foo.value.must_equal 'b' }
-    it { foo.choices.must_equal [['AAA', 'a'], ['BBB', 'b']] }
+    it { _(foo.json_primitive).must_equal :string }
+    it { _(foo.template).must_equal 'select' }
+    it { _(foo.field_options.keys).must_include :include_blank }
+    it { _(foo.html_options.keys).must_include :multiple }
+    it { _(foo).wont_be :multiple? }
+    it { _(foo.json_value).must_equal 'b' }
+    it { _(foo.value).must_equal 'b' }
+    it { _(foo.choices).must_equal [['AAA', 'a'], ['BBB', 'b']] }
 
-    it { bars.json_primitive.must_equal :array }
-    it { bars.must_be :multiple? }
-    it { bars.json_value.must_equal ['x', 'y'] }
-    it { bars.value.must_equal ['x', 'y'] }
-    it { bars.choices.must_equal [['XXX', 'x'], ['YYY', 'y']] }
+    it { _(bars.json_primitive).must_equal :array }
+    it { _(bars).must_be :multiple? }
+    it { _(bars.json_value).must_equal ['x', 'y'] }
+    it { _(bars.value).must_equal ['x', 'y'] }
+    it { _(bars.choices).must_equal [['XXX', 'x'], ['YYY', 'y']] }
 
-    it { node.foo.must_equal 'b' }
-    it { node.bars.must_equal ['x', 'y'] }
+    it { _(node.foo).must_equal 'b' }
+    it { _(node.bars).must_equal ['x', 'y'] }
 
   end
 end

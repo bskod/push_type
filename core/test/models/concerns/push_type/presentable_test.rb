@@ -8,17 +8,17 @@ module PushType
     end
 
     describe 'class methods' do
-      it { Page.presenter_class_name.must_equal 'PagePresenter' }
-      it { Location.presenter_class_name.must_equal 'LocationPresenter' }
-      it { Page.presenter_class.must_be_instance_of Class }
+      it { _(Page.presenter_class_name).must_equal 'PagePresenter' }
+      it { _(Location.presenter_class_name).must_equal 'LocationPresenter' }
+      it { _(Page.presenter_class).must_be_instance_of Class }
     end
 
     describe 'instance methods' do
       let(:page) { TestPage.new FactoryBot.attributes_for(:node) }
-      it { page.presenter_class.must_be_instance_of Class }
-      it { page.location.presenter_class.must_be_instance_of Class }
-      it { page.present!.class.ancestors.must_include PushType::Presenter }
-      it { page.location.present!.class.ancestors.must_include PushType::Presenter }
+      it { _(page.presenter_class).must_be_instance_of Class }
+      it { _(page.location.presenter_class).must_be_instance_of Class }
+      it { _(page.present!.class.ancestors).must_include PushType::Presenter }
+      it { _(page.location.present!.class.ancestors).must_include PushType::Presenter }
     end
 
     it "autoloads the presenter" do
@@ -34,8 +34,8 @@ module PushType
         end
         RUBY
 
-        PresentableNode.presenter_class_name.must_equal "PresentableNodePresenter"
-        PresentableNode.presenter_class.static?.must_equal true
+        _(PresentableNode.presenter_class_name).must_equal "PresentableNodePresenter"
+        _(PresentableNode.presenter_class.static?).must_equal true
       ensure
         Object.send(:remove_const, :PresentableNode)
         Object.send(:remove_const, :PresentableNodePresenter) if defined?(::PresentableNodePresenter)

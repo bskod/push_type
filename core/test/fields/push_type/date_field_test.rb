@@ -11,12 +11,12 @@ module PushType
     let(:date)  { Date.today }
     let(:field) { node.fields[:foo] }
     
-    it { field.template.must_equal 'date' }
-    it { field.form_helper.must_equal :date_field }
-    it { field.json_value.must_equal date.to_s }
-    it { field.value.must_equal date }
+    it { _(field.template).must_equal 'date' }
+    it { _(field.form_helper).must_equal :date_field }
+    it { _(field.json_value).must_equal date.to_s }
+    it { _(field.value).must_equal date }
 
-    it { node.foo.must_equal date }
+    it { _(node.foo).must_equal date }
 
   end
 end

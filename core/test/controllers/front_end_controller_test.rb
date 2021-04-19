@@ -11,19 +11,19 @@ class FrontEndControllerTest < ActionController::TestCase
 
     describe 'when node does not exist' do
       let(:permalink) { 'does/not/exist' }
-      it { proc { action! }.must_raise ActiveRecord::RecordNotFound }
+      it { expect { action! }.must_raise ActiveRecord::RecordNotFound }
     end
     describe 'when node not published' do
       let(:attributes) { FactoryBot.attributes_for :node, type: 'Page' }
-      it { proc { action! }.must_raise ActiveRecord::RecordNotFound }
+      it { expect { action! }.must_raise ActiveRecord::RecordNotFound }
     end
     describe 'when node is published' do
       let(:attributes) { FactoryBot.attributes_for :published_node, type: 'Page' }
       before { action! }
-      it { response.must_render_template 'nodes/page' }
-      it { assigns[:node].must_equal page }
-      it { assigns[:page].must_equal page }
-      it { assigns[:page].class.ancestors.must_include PushType::Presenter }
+      it { _(response).must_render_template 'nodes/page' }
+      it { _(assigns[:node]).must_equal page }
+      it { _(assigns[:page]).must_equal page }
+      it { _(assigns[:page].class.ancestors).must_include PushType::Presenter }
     end
   end
 
@@ -34,15 +34,15 @@ class FrontEndControllerTest < ActionController::TestCase
 
     describe 'when node does not exist' do
       let(:id) { 'abcefg12345' }
-      it { proc { action! }.must_raise ActiveRecord::RecordNotFound }
+      it { expect { action! }.must_raise ActiveRecord::RecordNotFound }
     end
     describe 'when node not published' do
       before { action! }
-      it { response.must_render_template 'nodes/page' }
-      it { response.headers.must_include 'X-Robots-Tag' }
-      it { response.headers['X-Robots-Tag'].must_equal 'none' }
-      it { assigns[:node].must_equal page }
-      it { assigns[:page].must_equal page }
+      it { _(response).must_render_template 'nodes/page' }
+      it { _(response.headers).must_include 'X-Robots-Tag' }
+      it { _(response.headers['X-Robots-Tag']).must_equal 'none' }
+      it { _(assigns[:node]).must_equal page }
+      it { _(assigns[:page]).must_equal page }
     end
   end
 
@@ -67,14 +67,14 @@ class FrontEndControllerTest < ActionController::TestCase
 
     let(:page) { FactoryBot.create :published_node, type: 'Page' }
     before { get :show, params: { permalink: page.permalink } }
-    it { assigns[:foo].must_be_instance_of Hash }
-    it { assigns[:foo][:node_action].must_equal true }
-    it { assigns[:foo][:page_action].must_equal true }
-    it { assigns[:foo][:foo_action].wont_be :present? }
-    it { assigns[:foo][:except_page_action].wont_be :present? }
-    it { assigns[:foo][:except_foo_action].must_equal true }
-    it { assigns[:foo][:test_1].must_equal true }
-    it { assigns[:foo][:test_2].must_equal true }
+    it { _(assigns[:foo]).must_be_instance_of Hash }
+    it { _(assigns[:foo][:node_action]).must_equal true }
+    it { _(assigns[:foo][:page_action]).must_equal true }
+    it { _(assigns[:foo][:foo_action]).wont_be :present? }
+    it { _(assigns[:foo][:except_page_action]).wont_be :present? }
+    it { _(assigns[:foo][:except_foo_action]).must_equal true }
+    it { _(assigns[:foo][:test_1]).must_equal true }
+    it { _(assigns[:foo][:test_2]).must_equal true }
   end
 
 end

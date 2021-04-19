@@ -19,19 +19,19 @@ module PushType
     let(:val)   { [{ key: 'a', val: 'b' }, { key: 'x', val: 'y' }] }
     let(:field) { node.fields[:foo] }
 
-    it { field.template.must_equal 'matrix' }
-    it { field.fields.keys.must_include :key, :val }
-    it { field.fields.values.map { |v| v.class }.must_include PushType::StringField, PushType::TextField }
-    it { field.json_value.must_equal [{ 'key' => 'a', 'val' => 'b' }, { 'key' => 'x', 'val' => 'y' }] }
-    it { field.value.all? { |v| v.class.name == 'PushType::Structure' }.must_equal true }
-    it { field.value.first.fields.keys.must_include :key, :val }
-    it { field.value[0].key.must_equal 'a' }
-    it { field.value[1].val.must_equal 'y' }
+    it { _(field.template).must_equal 'matrix' }
+    it { _(field.fields.keys).must_include :key, :val }
+    it { _(field.fields.values.map { |v| v.class }).must_include PushType::StringField, PushType::TextField }
+    it { _(field.json_value).must_equal [{ 'key' => 'a', 'val' => 'b' }, { 'key' => 'x', 'val' => 'y' }] }
+    it { _(field.value.all? { |v| v.class.name == 'PushType::Structure' }).must_equal true }
+    it { _(field.value.first.fields.keys).must_include :key, :val }
+    it { _(field.value[0].key).must_equal 'a' }
+    it { _(field.value[1].val).must_equal 'y' }
 
-    it { node.bar.first.must_be_instance_of TestLocation }
-    it { node.bar.first.class.ancestors.must_include PushType::Structure }
-    it { node.fields[:bar].grid?.must_equal true }
-    it { node.fields[:foo].grid?.must_equal false }
+    it { _(node.bar.first).must_be_instance_of TestLocation }
+    it { _(node.bar.first.class.ancestors).must_include PushType::Structure }
+    it { _(node.fields[:bar].grid?).must_equal true }
+    it { _(node.fields[:foo].grid?).must_equal false }
 
   end
 end

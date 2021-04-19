@@ -19,15 +19,15 @@ module PushType
           end
         end
 
-        it { item.text.must_equal 'FooBar' }
-        it { item.link.must_equal '/foobar' }
-        it { item.active.call.must_equal true }
-        it { item.element.must_equal :div }
-        it { item.item_options[:class].must_equal 'foo-bar' }
-        it { item.item_options[:data][:foo].must_equal 'bar' }
-        it { item.link_options[:class].must_equal 'foo-baz' }
-        it { item.link_options[:data][:foo].must_equal 'baz' }
-        it { item.active_class.must_equal 'foo-active' }
+        it { _(item.text).must_equal 'FooBar' }
+        it { _(item.link).must_equal '/foobar' }
+        it { _(item.active.call).must_equal true }
+        it { _(item.element).must_equal :div }
+        it { _(item.item_options[:class]).must_equal 'foo-bar' }
+        it { _(item.item_options[:data][:foo]).must_equal 'bar' }
+        it { _(item.link_options[:class]).must_equal 'foo-baz' }
+        it { _(item.link_options[:data][:foo]).must_equal 'baz' }
+        it { _(item.active_class).must_equal 'foo-active' }
       end
 
     end

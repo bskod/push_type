@@ -15,9 +15,9 @@ module PushType
           end
         end
 
-        it { menu.element.must_equal :div }
-        it { menu.html_options[:class].must_equal 'foo-bar' }
-        it { menu.active_class.must_equal 'foo-active' }
+        it { _(menu.element).must_equal :div }
+        it { _(menu.html_options[:class]).must_equal 'foo-bar' }
+        it { _(menu.active_class).must_equal 'foo-active' }
       end
 
     end

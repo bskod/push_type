@@ -17,19 +17,19 @@ module PushType
     describe '.template' do
       describe 'defaults' do
         let(:page) { TestPage.new }
-        it { page.template.must_equal 'nodes/push_type/templatable_test/test_page' }
-        it { page.template_args.must_equal ['nodes/push_type/templatable_test/test_page', {}] }
+        it { _(page.template).must_equal 'nodes/push_type/templatable_test/test_page' }
+        it { _(page.template_args).must_equal ['nodes/push_type/templatable_test/test_page', {}] }
       end
 
       describe 'set template' do
         let(:page) { TestPageTemplate.new }
-        it { page.template.must_equal 'nodes/foo' }
+        it { _(page.template).must_equal 'nodes/foo' }
       end
 
       describe 'set template with args' do
         let(:page) { TestPageTemplateArgs.new }
-        it { page.template.must_equal 'bar/foo' }
-        it { page.template_args.must_equal ['bar/foo', { layout: 'my_layout' }] }
+        it { _(page.template).must_equal 'bar/foo' }
+        it { _(page.template_args).must_equal ['bar/foo', { layout: 'my_layout' }] }
       end
 
     end

@@ -5,26 +5,26 @@ module PushType
 
     describe 'to_bool' do
       # Strings
-      it { ''.to_bool.must_equal false }
-      it { '0'.to_bool.must_equal false }
-      it { 'no'.to_bool.must_equal false }
-      it { 'false'.to_bool.must_equal false }
-      it { '1'.to_bool.must_equal true }
-      it { 'anything else'.to_bool.must_equal true }
+      it { _(''.to_bool).must_equal false }
+      it { _('0'.to_bool).must_equal false }
+      it { _('no'.to_bool).must_equal false }
+      it { _('false'.to_bool).must_equal false }
+      it { _('1'.to_bool).must_equal true }
+      it { _('anything else'.to_bool).must_equal true }
 
       # Fixnums
-      it { 0.to_bool.must_equal false }
-      it { 1.to_bool.must_equal true }
-      it { 1234.to_bool.must_equal true }
+      it { _(0.to_bool).must_equal false }
+      it { _(1.to_bool).must_equal true }
+      it { _(1234.to_bool).must_equal true }
 
       # Booleans
-      it { false.to_i.must_equal 0 }
-      it { false.to_bool.must_equal false }
-      it { true.to_i.must_equal 1 }
-      it { true.to_bool.must_equal true }
+      it { _(false.to_i).must_equal 0 }
+      it { _(false.to_bool).must_equal false }
+      it { _(true.to_i).must_equal 1 }
+      it { _(true.to_bool).must_equal true }
 
       # Nils
-      it { nil.to_bool.must_equal false }
+      it { _(nil.to_bool).must_equal false }
     end
     
   end

@@ -10,15 +10,15 @@ module PushType
 
       describe '#render_menu' do
         subject { renderer.render_menu menu }
-        it { subject.must_be_kind_of String }
-        it { subject.must_match %r{\A<ul>.*</ul>\z} }
+        it { _(subject).must_be_kind_of String }
+        it { _(subject).must_match %r{\A<ul>.*</ul>\z} }
       end
 
       describe '#render_item' do
         before { item.link = '/foobar' }
         subject { renderer.render_item item }
-        it { subject.must_be_kind_of String }
-        it { subject.must_match %r{\A<li><a href="/foobar">.*</a></li>\z} }
+        it { _(subject).must_be_kind_of String }
+        it { _(subject).must_match %r{\A<li><a href="/foobar">.*</a></li>\z} }
       end
 
     end

@@ -11,11 +11,11 @@ module PushType
     let(:val)   { 'abc' }
     let(:field) { node.fields[:foo] }
     
-    it { field.form_helper.must_equal :text_field }
-    it { field.json_value.must_equal val }
-    it { field.value.must_equal val }
+    it { _(field.form_helper).must_equal :text_field }
+    it { _(field.json_value).must_equal val }
+    it { _(field.value).must_equal val }
 
-    it { node.foo.must_equal val }
+    it { _(node.foo).must_equal val }
 
   end
 end

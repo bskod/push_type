@@ -13,15 +13,15 @@ module PushType
     let(:bar)   { node.fields[:bar] }
 
     
-    it { foo.json_primitive.must_equal :number }
-    it { foo.form_helper.must_equal :number_field }
-    it { foo.json_value.must_equal 1 }
-    it { foo.value.must_equal 1 }
-    it { bar.json_value.must_equal 1.234 }
-    it { bar.value.must_equal 1.234 }
+    it { _(foo.json_primitive).must_equal :number }
+    it { _(foo.form_helper).must_equal :number_field }
+    it { _(foo.json_value).must_equal 1 }
+    it { _(foo.value).must_equal 1 }
+    it { _(bar.json_value).must_equal 1.234 }
+    it { _(bar.value).must_equal 1.234 }
 
-    it { node.foo.must_equal 1 }
-    it { node.bar.must_equal 1.234 }
+    it { _(node.foo).must_equal 1 }
+    it { _(node.bar).must_equal 1.234 }
 
   end
 end

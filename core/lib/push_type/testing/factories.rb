@@ -11,11 +11,11 @@ FactoryBot.define do
   end
 
   factory :node, class: 'PushType::Node' do
-    title   'Foo bar'
+    title   { 'Foo bar' }
     slug    { generate :slug }
 
     factory :published_node do
-      status 'published'
+      status { 'published' }
     end
   end
 
@@ -24,7 +24,7 @@ FactoryBot.define do
   end
 
   factory :user, class: 'PushType::User' do
-    name    'Joe Bloggs'
+    name    { 'Joe Bloggs' }
     email   { generate :email }
   end
 
